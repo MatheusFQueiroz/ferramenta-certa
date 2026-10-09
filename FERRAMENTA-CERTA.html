@@ -1,0 +1,58 @@
+<!DOCTYPE html><html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>FERRAMENTA CERTA</title><style>
+*{box-sizing:border-box;margin:0;padding:0}html,body{height:100%;overflow:hidden}
+body{font-family:"Trebuchet MS",Verdana,sans-serif;color:#2A3081;background:#F4F5FB;display:flex;flex-direction:column;user-select:none}
+header{background:#2A3081;color:#fff;padding:10px 20px;display:flex;align-items:center;gap:12px;flex-shrink:0}
+header h1{font-size:24px;letter-spacing:1px}.chip{font-size:19px;font-weight:bold;border-radius:12px;padding:7px 14px;white-space:nowrap}
+#cR{background:#fff;color:#2A3081;margin-left:auto}#cE{background:#FFD900;color:#2A3081}
+#palco{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1.6vh;padding:1.4vh 2vw;min-height:0}
+#regra{font-size:clamp(18px,3vh,26px);font-weight:bold;text-align:center}
+.qa,.qz{display:inline-block;border-radius:8px;padding:0 10px;color:#2A3081}.qa{background:#FFD43B}.qz{background:#74C0FC}
+#frase{min-height:clamp(44px,7.5vh,64px);font-size:clamp(22px,4vh,36px);font-weight:bold;background:#fff;border-radius:16px;padding:.8vh 26px;box-shadow:0 4px 14px rgba(42,48,129,.12);display:flex;align-items:center;gap:14px;text-align:center}
+#frase:empty{visibility:hidden}
+#grade{display:grid;grid-template-columns:repeat(4,1fr);gap:1.6vh;width:min(94vw,calc((100vh - 200px) * 1.4));flex-shrink:0}
+.carta{aspect-ratio:1/0.78;border-radius:18px;border:5px solid transparent;font:inherit;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:clamp(40px,10vh,96px);line-height:1;box-shadow:0 4px 10px rgba(0,0,0,.15);transition:transform .15s}
+.carta:hover{transform:scale(1.04)}
+.carta.fer{background:#FFD43B}.carta.fun{background:#74C0FC}
+.carta .v{display:none}.carta .q{font-size:.7em;font-weight:bold;color:rgba(42,48,129,.55)}
+.carta.aberta,.carta.ok{background:#fff}.carta.aberta .v,.carta.ok .v{display:block}.carta.aberta .q,.carta.ok .q{display:none}
+.carta.aberta.fer{border-color:#FAB005}.carta.aberta.fun{border-color:#1C7ED6}
+.carta.ok{border-color:#2F9E44;cursor:default;transform:none;box-shadow:none}
+#aviso{position:fixed;bottom:22px;left:50%;transform:translateX(-50%);font-size:24px;font-weight:bold;padding:12px 26px;border-radius:14px;display:none;background:#E8590C;color:#fff;z-index:40;box-shadow:0 6px 18px rgba(0,0,0,.25)}
+#festa{position:fixed;inset:0;background:rgba(255,255,255,.97);display:none;flex-direction:column;align-items:center;gap:1.6vh;text-align:center;padding:3vh 20px;overflow-y:auto;z-index:20}
+#festa>:first-child{margin-top:auto}#festa>:last-child{margin-bottom:auto}
+#festa .tit{font-size:clamp(32px,6vh,52px);font-weight:bold}#festa .sub{font-size:clamp(19px,3.2vh,26px);color:#444;max-width:820px;line-height:1.4}
+#festa .lista{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1vh 30px;max-width:900px;text-align:left}
+#festa .lista div{font-size:clamp(17px,2.9vh,24px);font-weight:bold}
+#festa button{font:inherit;font-size:26px;font-weight:bold;padding:1.6vh 34px;border:none;border-radius:14px;background:#2F9E44;color:#fff;cursor:pointer}
+.emoG{font-size:clamp(64px,13vh,120px);line-height:1}
+</style></head><body>
+<header><h1>🧰 FERRAMENTA CERTA</h1><div class="chip" id="cR">—</div><div class="chip" id="cE">⭐ 0</div></header>
+<div id="palco"><div id="regra">Vire uma <span class="qa">AMARELA</span> (a ferramenta) e uma <span class="qz">AZUL</span> (o que ela faz)</div>
+<div id="frase"></div><div id="grade"></div></div><div id="aviso"></div><div id="festa"></div>
+<script>(function(){var $=function(i){return document.getElementById(i)};
+var R=[
+ {nome:'Em casa',p:[['✂️','📄','A <b>TESOURA</b> corta o <b>PAPEL</b>.'],['🔑','🚪','A <b>CHAVE</b> abre a <b>PORTA</b>.'],['☂️','🌧️','O <b>GUARDA-CHUVA</b> protege da <b>CHUVA</b>.'],['⛏️','💎','A <b>PICARETA</b> cava até o <b>DIAMANTE</b>.'],['🧹','🍂','A <b>VASSOURA</b> varre as <b>FOLHAS</b>.'],['🧼','👐','O <b>SABONETE</b> limpa as <b>MÃOS</b>.']]},
+ {nome:'Aparelhos',p:[['🔦','🌙','A <b>LANTERNA</b> ilumina o <b>ESCURO</b>.'],['⏰','😴','O <b>DESPERTADOR</b> acorda quem <b>DORME</b>.'],['🎧','🎵','O <b>FONE</b> deixa ouvir <b>MÚSICA</b>.'],['📞','👵','O <b>TELEFONE</b> fala com a <b>VOVÓ</b> que mora longe.'],['📷','🖼️','A <b>CÂMERA</b> tira <b>FOTO</b>.'],['🌡️','🤒','O <b>TERMÔMETRO</b> mede a <b>FEBRE</b>.']]},
+ {nome:'No computador',p:[['⌨️','🔤','O <b>TECLADO</b> escreve <b>LETRAS</b>.'],['🖱️','👆','O <b>MOUSE</b> aponta e <b>CLICA</b>.'],['🖨️','📃','A <b>IMPRESSORA</b> põe no <b>PAPEL</b>.'],['🎤','🗣️','O <b>MICROFONE</b> escuta a <b>VOZ</b>.'],['🖥️','👀','A <b>TELA</b> mostra as <b>IMAGENS</b>.'],['📱','💬','O <b>CELULAR</b> manda <b>MENSAGEM</b>.']]}
+],r=0,est=0,aberta=[],trava=false,achados=0;
+function emb(a){a=a.slice();for(var i=a.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1)),t=a[i];a[i]=a[j];a[j]=t;}return a;}
+function aviso(t){var a=$('aviso');a.textContent=t;a.style.display='block';clearTimeout(a._t);a._t=setTimeout(function(){a.style.display='none';},1600);}
+function festa(html,bt,fn){var f=$('festa');f.innerHTML=html+'<button id="btF">'+bt+'</button>';f.style.display='flex';$('btF').onclick=function(){f.style.display='none';fn();};}
+function monta(){var Rd=R[r],cs=[];achados=0;aberta=[];trava=false;$('frase').innerHTML='';
+ Rd.p.forEach(function(p,i){cs.push({par:i,t:'fer',e:p[0]});cs.push({par:i,t:'fun',e:p[1]});});
+ $('cR').textContent='Rodada '+(r+1)+' de '+R.length+' · '+Rd.nome;
+ var g=$('grade');g.innerHTML='';
+ emb(cs).forEach(function(c){var b=document.createElement('button');b.className='carta '+c.t;b.innerHTML='<span class="q">?</span><span class="v">'+c.e+'</span>';b._c=c;b.onclick=function(){vira(b);};g.appendChild(b);});}
+function vira(b){if(trava||b.classList.contains('ok')||b.classList.contains('aberta'))return;
+ if(aberta.length===1&&aberta[0]._c.t===b._c.t){aviso(b._c.t==='fer'?'Agora vire uma AZUL!':'Agora vire uma AMARELA!');return;}
+ b.classList.add('aberta');aberta.push(b);if(aberta.length<2)return;
+ var a=aberta[0],c=aberta[1];
+ if(a._c.par===c._c.par){a.classList.remove('aberta');c.classList.remove('aberta');a.classList.add('ok');c.classList.add('ok');aberta=[];achados++;est++;$('cE').textContent='⭐ '+est;
+  var p=R[r].p[a._c.par];$('frase').innerHTML='<span>'+p[0]+'</span><span>'+p[2]+'</span><span>'+p[1]+'</span>';
+  if(achados===R[r].p.length)setTimeout(fimRodada,900);}
+ else{trava=true;setTimeout(function(){a.classList.remove('aberta');c.classList.remove('aberta');aberta=[];trava=false;},1200);}}
+function fimRodada(){var Rd=R[r],h='<div class="lista">';Rd.p.forEach(function(p){h+='<div>'+p[0]+' '+p[2]+'</div>';});h+='</div>';
+ if(r<R.length-1)festa('<div class="emoG">🎉</div><div class="tit">Rodada completa!</div><div class="sub">Cada ferramenta tem uma função:</div>'+h,'PRÓXIMA RODADA →',function(){r++;monta();});
+ else festa('<div class="emoG">🏆</div><div class="tit">Toda ferramenta tem uma função!</div><div class="sub">O computador também é uma caixa de ferramentas: cada parte faz uma coisa.<br>Você juntou <b>'+est+'</b> estrelas.</div>'+h,'JOGAR DE NOVO',function(){r=0;est=0;$('cE').textContent='⭐ 0';monta();});}
+window.__t={R:R,get r(){return r},get est(){return est}};monta();})();</script></body></html>
